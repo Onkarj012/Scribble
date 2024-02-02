@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_notes/screens/homepage.dart';
-//import 'package:my_notes/screens/notes.dart';
+import 'package:my_notes/screens/notes.dart';
 
 import 'firebase_options.dart';
 
