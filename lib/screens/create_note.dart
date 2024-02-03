@@ -8,6 +8,7 @@ class CreateNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
         title: const Text('Create Note'),
         actions: [

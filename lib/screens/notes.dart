@@ -39,7 +39,7 @@ class Notes extends StatelessWidget {
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: ListTile(
-                  tileColor: Colors.teal,
+                  tileColor: Colors.black26,
                   title: Text(notesData[index]['title']!),
                   subtitle: Text(notesData[index]['content']!),
                 ),
