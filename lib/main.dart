@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_notes/AuthService/auth_service.dart';
 import 'package:my_notes/screens/homepage.dart';
 import 'package:my_notes/screens/notes.dart';
 
@@ -23,9 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: AuthService().handleAuthState(),
     );
   }
 }
-
-

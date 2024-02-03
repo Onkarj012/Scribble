@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_notes/AuthService/auth_service.dart';
+import 'package:my_notes/screens/sign_up.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,7 +11,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _formKey = GlobalKey<FormState>();
-
+  String id = '';
+  String password = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,11 +27,10 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-
                 Form(
                   key: _formKey,
                   child: Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       children: [
                         TextFormField(
@@ -44,6 +46,9 @@ class _HomePageState extends State<HomePage> {
                             }
                             return null;
                           },
+                          onSaved: (value) {
+                            id != value!;
+                          },
                         ),
                         TextFormField(
                           decoration:const InputDecoration(
@@ -54,6 +59,9 @@ class _HomePageState extends State<HomePage> {
                               return 'Please enter some valid email';
                             }
                             return null;
+                          },
+                          onSaved: (value) {
+                            password != value!;
                           },
                         ),
                       ],
@@ -66,9 +74,23 @@ class _HomePageState extends State<HomePage> {
                     if(!_formKey.currentState!.validate()){
                       return ;
                     }
+                    _formKey.currentState!.save();
+                    AuthService().signInWithEmail(id, password);
                   },
                   child: const Text('submit'),
                 ),
+                IconButton(
+                    onPressed: () {
+                      AuthService().signInWithGoogle(context);
+                    },
+                    icon: const Icon(Icons.login)
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp()));
+                    },
+                    child: Text("Create user"),
+                )
               ],
             ),
           ),
